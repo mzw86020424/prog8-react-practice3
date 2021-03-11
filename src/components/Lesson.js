@@ -6,6 +6,10 @@ class Lesson extends React.Component{
     this.state = { isModalOpen: false }
   };
 
+  handleClickLesson() {
+    this.setState({ isModalOpen: true });
+  }
+
   render() {
     let modal;
     if (this.state.isModalOpen) {
@@ -26,8 +30,14 @@ class Lesson extends React.Component{
     }
 
     return (
-      <div className="lesson-card">
-        <div className="lesson-item">
+      <div
+        className="lesson-card"
+        onClick={() => { this.handleClickLesson() }}
+      >
+        <div
+          className="lesson-item"
+          
+        >
           <p>{this.props.name}</p>
           <img src={this.props.image} />
         </div>
