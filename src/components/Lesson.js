@@ -3,11 +3,15 @@ import React from 'react';
 class Lesson extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { isModalOpen: false }
+    this.state = { isModalOpen: false };
   };
 
   handleClickLesson() {
     this.setState({ isModalOpen: true });
+  }
+
+  handleClickClose() {
+    this.setState({isModalOpen: false})
   }
 
   render() {
@@ -21,22 +25,23 @@ class Lesson extends React.Component{
               <h2>{this.props.name}</h2>
               <p>{this.props.introduction}</p>
             </div>
-            <button className="modal-close-btn">
+            <button
+              className="modal-close-btn"
+              onClick={() => { this.handleClickClose() }}
+            >
               とじる
             </button>
           </div>
         </div>
-      )
+      );
     }
 
     return (
-      <div
-        className="lesson-card"
-        onClick={() => { this.handleClickLesson() }}
-      >
+      <div className="lesson-card">
+        
         <div
           className="lesson-item"
-          
+          onClick={() => { this.handleClickLesson() }}
         >
           <p>{this.props.name}</p>
           <img src={this.props.image} />
