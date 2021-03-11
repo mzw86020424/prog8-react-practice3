@@ -8,6 +8,12 @@ class ContactForm extends React.Component{
     }
   }
 
+  handleSubmit() {
+    this.setState({
+      isSubmitted: true
+    })
+  }
+
   render() {
     let contactForm;
     if (this.state.isSubmitted) {
@@ -18,7 +24,7 @@ class ContactForm extends React.Component{
       )
     } else {
       contactForm = (
-        <form>
+        <form onSubmit={() => { this.handleSubmit() }}>
           <p>メールアドレス（必須）</p>
           <input />
           <p>お問い合わせ内容（必須）</p>
