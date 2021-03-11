@@ -1,15 +1,15 @@
 import React from 'react';
 
 class Lesson extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = { isModalOpen: false }
+  };
+
   render() {
-    return (
-      <div className="lesson-card">
-        <div className="lesson-item">
-          <p>{this.props.name}</p>
-          <img src={this.props.image} />
-        </div>
-        
-        {/* モーダル */}
+    let modal;
+    if (this.state.isModalOpen) {
+      modal = (
         <div className="modal">
           <div className="modal-inner">
             <div className="modal-header"></div>
@@ -22,6 +22,16 @@ class Lesson extends React.Component{
             </button>
           </div>
         </div>
+      )
+    }
+
+    return (
+      <div className="lesson-card">
+        <div className="lesson-item">
+          <p>{this.props.name}</p>
+          <img src={this.props.image} />
+        </div>
+        {modal}
       </div>
     );
   }
